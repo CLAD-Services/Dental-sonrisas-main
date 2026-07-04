@@ -17,10 +17,10 @@ function cn(...inputs: ClassValue[]) {
 
 // --- Data Models ---
 const TABS = [
-  { id: 'home', label: 'Home' },
-  { id: 'treatments', label: 'Treatments' },
-  { id: 'clinic', label: 'Our Clinic' },
-  { id: 'experience', label: 'Patient Experience' }
+  { id: 'home', label: 'Inicio' },
+  { id: 'treatments', label: 'Tratamientos' },
+  { id: 'clinic', label: 'Nuestra Clínica' },
+  { id: 'experience', label: 'Experiencias' }
 ] as const;
 
 type TabID = typeof TABS[number]['id'];
@@ -28,25 +28,25 @@ type TabID = typeof TABS[number]['id'];
 const TREATMENTS = [
   {
     id: 'ortho',
-    title: 'Invisalign & Modern Orthodontics',
-    desc: 'Transform your smile discreetly with cutting-edge clear aligner technology. Personalized plans designed for comfort and speed.',
-    stats: '500+ successful cases',
+    title: 'Invisalign y Ortodoncia Moderna',
+    desc: 'Transforma tu sonrisa discretamente con tecnología de alineadores transparentes de vanguardia. Planes personalizados diseñados para tu comodidad y rapidez.',
+    stats: 'Más de 500 casos exitosos',
     image: 'https://plus.unsplash.com/premium_photo-1673773401710-d23ef113e06f?q=80',
     icon: Activity
   },
   {
     id: 'whitening',
-    title: 'Laser Whitening',
-    desc: 'Safe, painless, and dramatic results. Our advanced laser technology delivers up to 8 shades brighter in under an hour.',
-    stats: '1-session transformation',
+    title: 'Blanqueamiento Láser',
+    desc: 'Resultados seguros, indoloros y dramáticos. Nuestra avanzada tecnología láser ofrece hasta 8 tonos más blancos en menos de una hora.',
+    stats: 'Transformación en 1 sesión',
     image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800',
     icon: Sparkles
   },
   {
     id: 'implants',
-    title: 'Dental Implants',
-    desc: 'Restore functionality and aesthetics with premium biocompatible implants. A permanent solution that feels entirely natural.',
-    stats: 'Lifetime warranty',
+    title: 'Implantes Dentales',
+    desc: 'Restaura la funcionalidad y estética con implantes premium biocompatibles. Una solución permanente que se siente completamente natural.',
+    stats: 'Garantía de por vida',
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800',
     icon: Shield
   }
@@ -55,42 +55,42 @@ const TREATMENTS = [
 const TESTIMONIALS = [
   {
     name: 'Maria G.',
-    quote: 'Absolutely painless. The environment feels more like a spa than a clinic. My smile has never looked better.',
+    quote: 'Absolutamente indoloro. El ambiente se siente más como un spa que como una clínica. Mi sonrisa nunca se ha visto mejor.',
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
   },
   {
     name: 'Carlos R.',
-    quote: 'The 3D scanning technology blew me away. They showed me exactly how my teeth would look before starting.',
+    quote: 'La tecnología de escaneo 3D me impresionó. Me mostraron exactamente cómo se verían mis dientes antes de comenzar.',
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
   },
   {
     name: 'Ana P.',
-    quote: 'Incredible whitening results in just one hour. Dr. Sonrisas and the team are true perfectionists.',
+    quote: 'Resultados de blanqueamiento increíbles en solo una hora. El Dr. Sonrisas y su equipo son verdaderos perfeccionistas.',
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
   },
   {
     name: 'Luis M.',
-    quote: 'I had severe dental anxiety, but their sedation protocols and calm demeanor completely changed my perspective.',
+    quote: 'Tenía mucha ansiedad dental, pero sus protocolos de sedación y su trato calmado cambiaron por completo mi perspectiva.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
   }
 ];
 
 const FAQS = [
   {
-    question: 'Do you accept dental insurance?',
-    answer: 'Yes, we work with most major insurance providers in Peru. Our administrative team will help verify your coverage and handle the paperwork for a seamless experience.',
+    question: '¿Aceptan seguros dentales?',
+    answer: 'Sí, trabajamos con la mayoría de los seguros en Perú. Nuestro equipo administrativo te ayudará a verificar tu cobertura y manejar el papeleo para una experiencia sin complicaciones.',
   },
   {
-    question: 'How long does the teeth whitening session take?',
-    answer: 'Our laser whitening treatment takes approximately 45-60 minutes. You will see immediate results with teeth up to 8 shades brighter in just one single session.',
+    question: '¿Cuánto dura la sesión de blanqueamiento dental?',
+    answer: 'Nuestro tratamiento de blanqueamiento láser dura aproximadamente 45-60 minutos. Verás resultados inmediatos con dientes hasta 8 tonos más blancos en una sola sesión.',
   },
   {
-    question: 'Is there parking available at the Miraflores clinic?',
-    answer: 'Absolutely. We offer free private parking for all our patients directly underneath the clinic. We are also easily accessible by public transportation.',
+    question: '¿Hay estacionamiento disponible en la clínica de Miraflores?',
+    answer: 'Absolutamente. Ofrecemos estacionamiento privado gratuito para todos nuestros pacientes directamente debajo de la clínica. También somos de fácil acceso en transporte público.',
   },
   {
-    question: 'Do you offer payment plans for larger treatments?',
-    answer: 'Yes, we offer flexible financing options with 0% interest installment plans for treatments like Invisalign and Dental Implants. We ensure premium care is accessible.',
+    question: '¿Ofrecen planes de pago para tratamientos más grandes?',
+    answer: 'Sí, ofrecemos opciones de financiamiento flexibles con cuotas sin intereses para tratamientos como Invisalign e Implantes Dentales. Nos aseguramos de que la atención premium sea accesible.',
   },
 ];
 
@@ -153,27 +153,27 @@ const HomeView = ({ setActiveTab }: { setActiveTab: (id: TabID) => void }) => {
           <motion.div variants={staggerContainer} initial="initial" animate="animate" className="relative z-10">
             <motion.div variants={fadeInUp} className="mb-6 inline-flex items-center gap-2 rounded-pill bg-coral/30 px-5 py-2 text-sm font-medium text-deep-teal/80">
               <Sparkles className="h-4 w-4 text-coral" />
-              <span>PREMIUM CLINIC IN MIRAFLORES</span>
+              <span>CLÍNICA PREMIUM EN MIRAFLORES</span>
             </motion.div>
 
             <motion.h1 variants={fadeInUp} className="font-syne text-5xl font-bold leading-tight text-deep-teal md:text-6xl lg:text-7xl">
-              A Smile That <br />
+              Una Sonrisa Que <br />
               <span className="relative inline-block text-coral">
-                Reflects Your
+                Refleja Tu
                 <motion.span
                   initial={{ rotate: 0, scale: 0 }}
                   animate={{ rotate: 6, scale: 1 }}
                   transition={{ delay: 0.8, type: "spring" }}
                   className="absolute -right-8 -top-8 rounded-lg bg-deep-teal px-4 py-2 text-xs font-bold tracking-wider text-white shadow-xl"
                 >
-                  40% OFF SCAN
+                  40% DSCTO ESCANEO
                 </motion.span>
               </span>
-              <br /> Energy.
+              <br /> Energía.
             </motion.h1>
 
             <motion.p variants={fadeInUp} className="mt-8 max-w-lg font-jakarta text-lg leading-relaxed text-deep-teal/70">
-              Experience dentistry redefined. We blend cutting-edge biosecurity with spa-like tranquility to craft your perfect smile.
+              Experimenta la odontología redefinida. Combinamos bioseguridad de vanguardia con la tranquilidad de un spa para diseñar tu sonrisa perfecta.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap items-center gap-6">
@@ -182,13 +182,13 @@ const HomeView = ({ setActiveTab }: { setActiveTab: (id: TabID) => void }) => {
                 className="inline-flex items-center gap-3 rounded-pill bg-deep-teal px-8 py-4 font-syne text-lg font-semibold text-white shadow-soft hover:shadow-xl"
               >
                 <MessageCircle className="h-5 w-5" />
-                Book Consultation
+                Agendar Consulta
               </MagneticButton>
               <button 
                 onClick={() => setActiveTab('treatments')}
                 className="group flex items-center gap-2 font-syne text-lg font-semibold text-deep-teal transition-colors hover:text-coral"
               >
-                Explore Treatments
+                Explorar Tratamientos
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </button>
             </motion.div>
@@ -203,7 +203,7 @@ const HomeView = ({ setActiveTab }: { setActiveTab: (id: TabID) => void }) => {
             <div className="organic-mask relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-deep-teal/10 to-coral/20 shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&q=80&w=800"
-                alt="Radiant patient smile"
+                alt="Sonrisa radiante de paciente"
                 className="h-full w-full object-cover"
               />
               <motion.div 
@@ -235,7 +235,7 @@ const HomeView = ({ setActiveTab }: { setActiveTab: (id: TabID) => void }) => {
                   <div className="flex text-yellow-400">
                     {[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}
                   </div>
-                  <p className="font-syne text-xs font-bold text-deep-teal">5.0 from 200+ reviews</p>
+                  <p className="font-syne text-xs font-bold text-deep-teal">5.0 de más de 200 reseñas</p>
                 </div>
               </div>
             </motion.div>
@@ -252,10 +252,10 @@ const TreatmentsView = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-20 text-center">
           <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-syne text-4xl font-bold text-deep-teal md:text-5xl">
-            Specialized Care
+            Atención Especializada
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mt-4 text-lg text-deep-teal/60">
-            Premium treatments designed for your unique smile journey
+            Tratamientos premium diseñados para el viaje único de tu sonrisa
           </motion.p>
         </div>
 
@@ -328,14 +328,14 @@ const ClinicView = () => {
             <div className="organic-mask aspect-square overflow-hidden shadow-2xl lg:aspect-[4/5]">
               <img 
                 src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800" 
-                alt="Clinic Interior" 
+                alt="Interior de la clínica" 
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="absolute -bottom-10 -right-10 hidden h-64 w-64 rounded-full border border-coral/30 bg-white/50 backdrop-blur-xl lg:flex items-center justify-center shadow-soft">
               <div className="text-center">
                 <span className="block font-syne text-5xl font-bold text-coral">15+</span>
-                <span className="font-jakarta text-sm font-medium tracking-widest text-deep-teal">YEARS OF<br/>EXCELLENCE</span>
+                <span className="font-jakarta text-sm font-medium tracking-widest text-deep-teal">AÑOS DE<br/>EXCELENCIA</span>
               </div>
             </div>
           </motion.div>
@@ -346,23 +346,23 @@ const ClinicView = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h2 className="font-syne text-4xl font-bold text-deep-teal md:text-5xl">
-              Elevating the Standard of <span className="text-coral">Modern Dentistry.</span>
+              Elevando el Estándar de la <span className="text-coral">Odontología Moderna.</span>
             </h2>
             <div className="mt-8 space-y-6 font-jakarta text-lg leading-relaxed text-deep-teal/70">
               <p>
-                Founded in the heart of Miraflores, Dr. Sonrisas was built on a singular vision: to eliminate the anxiety traditionally associated with dental visits and replace it with a truly restorative, spa-like experience.
+                Fundada en el corazón de Miraflores, Dr. Sonrisas fue construida con una visión singular: eliminar la ansiedad tradicionalmente asociada con las visitas al dentista y reemplazarla con una experiencia verdaderamente relajante y tipo spa.
               </p>
               <p>
-                We believe that biosecurity and comfort are not mutually exclusive. Our facility integrates hospital-grade sterilization protocols within an environment designed to soothe the senses—from aromatherapy to noise-canceling headphones during treatments.
+                Creemos que la bioseguridad y la comodidad no son excluyentes. Nuestras instalaciones integran protocolos de esterilización de grado hospitalario dentro de un entorno diseñado para calmar los sentidos, desde aromaterapia hasta auriculares con cancelación de ruido durante los tratamientos.
               </p>
             </div>
 
             <div className="mt-10 grid grid-cols-2 gap-6">
               {[
-                { icon: Shield, title: 'Biosecurity', desc: 'Strict international protocols' },
-                { icon: Award, title: 'Specialists', desc: 'Post-graduate credentials' },
-                { icon: Heart, title: 'Comfort First', desc: 'Sedation & spa environment' },
-                { icon: Activity, title: 'Technology', desc: 'Intraoral 3D Scanning' },
+                { icon: Shield, title: 'Bioseguridad', desc: 'Estrictos protocolos internacionales' },
+                { icon: Award, title: 'Especialistas', desc: 'Credenciales de posgrado' },
+                { icon: Heart, title: 'Confort Primero', desc: 'Sedación y entorno spa' },
+                { icon: Activity, title: 'Tecnología', desc: 'Escaneo intraoral 3D' },
               ].map((item, i) => (
                 <div key={i} className="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft transition-shadow hover:shadow-lg">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-coral/20">
@@ -394,7 +394,7 @@ const ExperienceView = () => {
       {/* Testimonials Ticker */}
       <div className="overflow-hidden bg-deep-teal py-20 text-white">
         <div className="mx-auto mb-16 max-w-7xl px-6 text-center lg:px-8">
-          <h2 className="font-syne text-4xl font-bold md:text-5xl">Real Patient Stories</h2>
+          <h2 className="font-syne text-4xl font-bold md:text-5xl">Historias de Pacientes Reales</h2>
         </div>
         
         <div className="relative flex w-full flex-nowrap items-center overflow-hidden">
@@ -409,7 +409,7 @@ const ExperienceView = () => {
                   <img src={t.image} alt={t.name} className="h-12 w-12 rounded-full object-cover" />
                   <div>
                     <h4 className="font-syne font-bold">{t.name}</h4>
-                    <p className="text-sm text-white/60">Verified Patient</p>
+                    <p className="text-sm text-white/60">Paciente Verificado</p>
                   </div>
                 </div>
               </div>
@@ -421,8 +421,8 @@ const ExperienceView = () => {
       {/* FAQs */}
       <div className="mx-auto mt-32 max-w-3xl px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h2 className="font-syne text-4xl font-bold text-deep-teal md:text-5xl">Clear Answers</h2>
-          <p className="mt-4 text-lg text-deep-teal/60">Everything you need to know before your visit.</p>
+          <h2 className="font-syne text-4xl font-bold text-deep-teal md:text-5xl">Respuestas Claras</h2>
+          <p className="mt-4 text-lg text-deep-teal/60">Todo lo que necesitas saber antes de tu visita.</p>
         </div>
 
         <div className="space-y-4">
@@ -563,7 +563,7 @@ export default function App() {
             viewport={{ once: true }}
             className="font-syne text-4xl font-bold text-white md:text-5xl lg:text-6xl"
           >
-            Ready for your most confident smile?
+            ¿Listo para tu sonrisa más segura?
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -572,7 +572,7 @@ export default function App() {
             transition={{ delay: 0.1 }}
             className="mt-6 font-jakarta text-lg text-white/70"
           >
-            Schedule your consultation today and discover the difference personalized, premium dental care makes.
+            Agenda tu consulta hoy y descubre la diferencia que hace una atención dental premium y personalizada.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -585,7 +585,7 @@ export default function App() {
               className="mt-10 inline-flex items-center gap-3 rounded-pill bg-coral px-10 py-5 font-syne text-xl font-bold text-deep-teal shadow-glow hover:shadow-coral/60"
             >
               <MessageCircle className="h-6 w-6" />
-              Chat Directly with Us
+              Chatea Directamente con Nosotros
             </MagneticButton>
           </motion.div>
         </div>
@@ -608,7 +608,7 @@ export default function App() {
                 </span>
               </div>
               <p className="max-w-sm font-jakarta text-sm leading-relaxed">
-                Premium dental clinic in Miraflores, Lima. Specializing in modern orthodontics, aesthetic dentistry, and pain-free treatments.
+                Clínica dental premium en Miraflores, Lima. Especialistas en ortodoncia moderna, estética dental y tratamientos sin dolor.
               </p>
               <div className="mt-8 flex gap-4">
                 <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-coral hover:text-deep-teal">
@@ -621,21 +621,21 @@ export default function App() {
             </div>
 
             <div>
-              <h4 className="font-syne text-lg font-semibold text-white mb-6">Visit Us</h4>
+              <h4 className="font-syne text-lg font-semibold text-white mb-6">Visítanos</h4>
               <ul className="space-y-4 font-jakarta text-sm">
                 <li className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 flex-shrink-0 text-coral" />
-                  <span>Av. Larco 123, Near Parque Kennedy<br />Miraflores, Lima, Peru</span>
+                  <span>Av. Larco 123, Cerca del Parque Kennedy<br />Miraflores, Lima, Perú</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Car className="h-5 w-5 flex-shrink-0 text-coral" />
-                  <span>Free private parking available</span>
+                  <span>Estacionamiento privado gratuito disponible</span>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-syne text-lg font-semibold text-white mb-6">Contact & Hours</h4>
+              <h4 className="font-syne text-lg font-semibold text-white mb-6">Contacto y Horarios</h4>
               <ul className="space-y-4 font-jakarta text-sm">
                 <li className="flex items-center gap-3">
                   <Phone className="h-5 w-5 flex-shrink-0 text-coral" />
@@ -644,8 +644,8 @@ export default function App() {
                 <li className="flex items-start gap-3 mt-4">
                   <Clock className="h-5 w-5 flex-shrink-0 text-coral" />
                   <div>
-                    <p>Mon - Fri: 9:00 AM - 7:00 PM</p>
-                    <p>Sat: 9:00 AM - 2:00 PM</p>
+                    <p>Lun - Vie: 9:00 AM - 7:00 PM</p>
+                    <p>Sáb: 9:00 AM - 2:00 PM</p>
                   </div>
                 </li>
               </ul>
@@ -653,10 +653,10 @@ export default function App() {
           </div>
 
           <div className="mt-16 flex flex-col items-center justify-between border-t border-white/10 pt-8 sm:flex-row">
-            <p className="text-sm font-jakarta">© 2024 Dr. Sonrisas Dental Clinic. All rights reserved.</p>
+            <p className="text-sm font-jakarta">© 2024 Clínica Dental Dr. Sonrisas. Todos los derechos reservados.</p>
             <div className="mt-4 flex gap-6 text-sm font-jakarta sm:mt-0">
-              <a href="#" className="hover:text-coral transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-coral transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-coral transition-colors">Política de Privacidad</a>
+              <a href="#" className="hover:text-coral transition-colors">Términos de Servicio</a>
             </div>
           </div>
         </div>
@@ -679,7 +679,7 @@ export default function App() {
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-whatsapp-green shadow-xl shadow-whatsapp-green/30 transition-transform duration-300 hover:scale-110"
-        aria-label="Chat on WhatsApp"
+        aria-label="Chatear por WhatsApp"
       >
         <svg viewBox="0 0 24 24" className="h-8 w-8 fill-white">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.416z"/>
