@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import FloatingBanner from './components/FloatingBanner';
 import logoImg from './assets/Logo.webp';
-import { motion, AnimatePresence, useScroll, useTransform} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MessageCircle, Star, MapPin, Clock, Phone, ChevronUp, Shield, 
-  Award,Car, Plus, Minus, Instagram, Facebook, 
-  ArrowRight, Heart, Sparkles, Activity
+  Award, Car, Plus, Minus, Instagram, Facebook, 
+  ArrowRight, Heart, Sparkles, Activity, Menu, X
 } from 'lucide-react';
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -72,6 +72,26 @@ const TESTIMONIALS = [
     name: 'Luis M.',
     quote: 'Tenía mucha ansiedad dental, pero sus protocolos de sedación y su trato calmado cambiaron por completo mi perspectiva.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+  },
+  {
+    name: 'Sofía V.',
+    quote: 'El trato al paciente es insuperable. Desde recepción hasta los especialistas, todos me hicieron sentir en casa.',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400',
+  },
+  {
+    name: 'Jorge T.',
+    quote: 'Mi tratamiento de ortodoncia invisible fue muy rápido. Nadie notaba que llevaba los alineadores en la oficina.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400',
+  },
+  {
+    name: 'Elena C.',
+    quote: 'Me colocaron un implante dental y fue un proceso sumamente profesional. Cero molestias al día siguiente.',
+    image: 'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&q=80&w=400',
+  },
+  {
+    name: 'Roberto D.',
+    quote: 'La limpieza dental con ultrasonido fue fantástica. Nunca había sentido mis dientes tan limpios y sanos.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
   }
 ];
 
@@ -384,37 +404,57 @@ const ClinicView = () => {
 
 const ExperienceView = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
-  const x = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" className="pt-32 pb-section" ref={containerRef}>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" className="pt-32 pb-section">
       
-      {/* Testimonials Ticker */}
-      <div className="overflow-hidden bg-deep-teal py-20 text-white">
+      {/* Testimonials List/Grid format */}
+      <div className="bg-deep-teal py-20 text-white">
         <div className="mx-auto mb-16 max-w-7xl px-6 text-center lg:px-8">
-          <h2 className="font-syne text-4xl font-bold md:text-5xl">Historias de Pacientes Reales</h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-syne text-4xl font-bold md:text-5xl"
+          >
+            Historias de Pacientes Reales
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-4 text-lg text-white/70"
+          >
+            Descubre por qué cientos confían su sonrisa en nosotros
+          </motion.p>
         </div>
         
-        <div className="relative flex w-full flex-nowrap items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-8 px-8">
-            {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
-              <div key={i} className="w-[400px] flex-shrink-0 rounded-3xl bg-white/10 p-8 backdrop-blur-md">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="rounded-3xl bg-white/10 p-8 backdrop-blur-md transition-colors hover:bg-white/15"
+              >
                 <div className="mb-6 flex gap-1 text-coral">
                   {[...Array(5)].map((_, idx) => <Star key={idx} className="h-4 w-4 fill-current" />)}
                 </div>
                 <p className="mb-8 font-jakarta text-lg italic leading-relaxed text-white/90">"{t.quote}"</p>
-                <div className="flex items-center gap-4">
-                  <img src={t.image} alt={t.name} className="h-12 w-12 rounded-full object-cover" />
+                <div className="mt-auto flex items-center gap-4">
+                  <img src={t.image} alt={t.name} className="h-12 w-12 rounded-full object-cover border-2 border-white/20" />
                   <div>
                     <h4 className="font-syne font-bold">{t.name}</h4>
-                    <p className="text-sm text-white/60">Paciente Verificado</p>
+                    <p className="text-sm text-coral">Paciente Verificado</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -470,6 +510,7 @@ const ExperienceView = () => {
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabID>('home');
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -477,8 +518,23 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [mobileMenuOpen]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleTabChange = (id: TabID) => {
+    setActiveTab(id);
+    setMobileMenuOpen(false);
+    scrollToTop();
   };
 
   return (
@@ -488,21 +544,20 @@ export default function App() {
       <header 
         className={cn(
           "fixed top-0 z-50 w-full transition-all duration-300",
-          scrolled ? "bg-white/80 backdrop-blur-lg shadow-sm py-4" : "bg-transparent py-6"
+          scrolled || mobileMenuOpen ? "bg-white/90 backdrop-blur-lg shadow-sm py-4" : "bg-transparent py-6"
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
            <div 
-            className="flex cursor-pointer items-center gap-3" 
-            onClick={() => { setActiveTab('home'); scrollToTop(); }}
+            className="flex cursor-pointer items-center gap-3 relative z-50" 
+            onClick={() => handleTabChange('home')}
           >
-            {/* Logo de la imagen reemplazando al ícono Sparkles */}
             <img 
               src={logoImg} 
               alt="Logo Dr. Sonrisas" 
-              className="h-20 w-auto object-contain" 
+              className="h-16 md:h-20 w-auto object-contain" 
             />
-            <span className="font-syne text-xl font-bold tracking-wide text-deep-teal">
+            <span className="font-syne text-lg md:text-xl font-bold tracking-wide text-deep-teal">
               DR. SONRISAS
             </span>
           </div>
@@ -512,7 +567,7 @@ export default function App() {
             {TABS.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => { setActiveTab(tab.id); scrollToTop(); }}
+                onClick={() => handleTabChange(tab.id)}
                 className={cn(
                   "relative rounded-full px-6 py-2.5 font-syne text-sm font-semibold transition-colors",
                   activeTab === tab.id ? "text-white" : "text-deep-teal hover:text-deep-teal/70"
@@ -530,23 +585,73 @@ export default function App() {
             ))}
           </nav>
           
-          {/* Mobile menu fallback indicator */}
-          <div className="md:hidden flex space-x-2">
-             <select 
-               className="bg-transparent font-syne font-bold text-deep-teal outline-none"
-               value={activeTab}
-               onChange={(e) => { setActiveTab(e.target.value as TabID); scrollToTop(); }}
-             >
-               {TABS.map(t => <option key={t.id} value={t.id}>{t.label}</option>)}
-             </select>
+          {/* Mobile menu toggle button */}
+          <div className="md:hidden flex space-x-2 relative z-50">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-deep-teal transition-colors focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+            </button>
           </div>
         </div>
+
+        {/* Animated Mobile Dropdown Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: '100vh' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute left-0 top-0 w-full bg-cream md:hidden overflow-hidden flex flex-col pt-28 px-6 pb-6"
+            >
+              <div className="flex flex-col space-y-4 flex-1">
+                {TABS.map((tab, i) => (
+                  <motion.button
+                    key={tab.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: i * 0.1, duration: 0.3 }}
+                    onClick={() => handleTabChange(tab.id)}
+                    className={cn(
+                      "flex items-center w-full px-6 py-5 rounded-2xl font-syne text-xl font-bold transition-all shadow-sm",
+                      activeTab === tab.id
+                        ? "bg-deep-teal text-white"
+                        : "bg-white text-deep-teal"
+                    )}
+                  >
+                    {tab.label}
+                    {activeTab === tab.id && <ArrowRight className="ml-auto h-5 w-5 text-coral" />}
+                  </motion.button>
+                ))}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-auto pb-10"
+              >
+                <MagneticButton 
+                  onClick={() => window.open('https://wa.me/51999888777', '_blank')}
+                  className="w-full flex items-center justify-center gap-3 rounded-pill bg-coral px-8 py-4 font-syne text-lg font-bold text-deep-teal shadow-glow"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  Agendar Cita Ahora
+                </MagneticButton>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Main Content Area */}
       <main className="min-h-screen">
         <AnimatePresence mode="wait">
-          {activeTab === 'home' && <HomeView key="home" setActiveTab={setActiveTab} />}
+          {activeTab === 'home' && <HomeView key="home" setActiveTab={handleTabChange} />}
           {activeTab === 'treatments' && <TreatmentsView key="treatments" />}
           {activeTab === 'clinic' && <ClinicView key="clinic" />}
           {activeTab === 'experience' && <ExperienceView key="experience" />}
@@ -667,7 +772,6 @@ export default function App() {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: scrolled ? 1 : 0, scale: scrolled ? 1 : 0.5 }}
         onClick={scrollToTop}
-        // NOTA: Cambié el bottom-6 a bottom-28 para que no choque con el FloatingBanner
         className="fixed bottom-28 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-deep-teal text-white shadow-xl transition-colors hover:bg-[#0A2A26] pointer-events-auto"
         style={{ pointerEvents: scrolled ? 'auto' : 'none' }}
       >
